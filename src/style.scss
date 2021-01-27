@@ -1,0 +1,101 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(./img/hands-world-map-clouds.jpg);
+  background-size: cover;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- SEARCH STYLE --- */
+
+.search {
+  &-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  &-input {
+    width: 25%;
+    padding: 12px 24px;
+
+    background-color: transparent;
+    transition: transform 250ms ease-in-out;
+    font-size: 25px;
+    line-height: 18px;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: 95% center;
+    border-radius: 50px;
+    border: 1px solid black;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+
+    &::placeholder {
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    &:hover,
+    &:focus {
+      padding: 12px 0;
+      outline: 0;
+      border: 1px solid transparent;
+      border-bottom: 1px solid black;
+      border-radius: 0;
+      background-position: 100% center;
+    }
+  }
+}
+
+/* --- COUNTRIES --- */
+
+.country-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  max-width: 700px;
+  background-color: rgba(189, 195, 199, 0.7);
+}
+
+.country-header {
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 50px;
+}
+.country-add {
+  margin-right: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.country-list {
+  font-size: 25px;
+}
+
+.item-info {
+  font-style: italic;
+  padding-left: 15px;
+}
+
+.lng {
+  padding-left: 30px;
+}
+
+.countries {
+  font-size: 20px;
+}
