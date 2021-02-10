@@ -1,15 +1,39 @@
-import './style.scss';
-import refs from './js/refs';
-import fetchCountries from './js/fetch-countries';
-import createMarkup from './js/markup';
 import debounce from 'lodash.debounce';
+import { postError } from './js/pnotify';
+import { fetchCountries } from './js/fetch-countries';
+import markupCountry from './templates/country-markup.hbs';
+import markupCountryList from './templates/country-list-markup.hbs';
 
-refs.input.addEventListener('input', debounce(findCountry, 500));
+const inputRef = document.querySelector('.search-input');
+const wrapRef = document.querySelector('.country-wrap');
 
-function findCountry() {
-  if (refs.input.value === '') {
-    refs.wrap.innerHTML = '';
+inputRef.addEventListener('input', debounce(createMarkup, 500));
+
+function createMarkup() {
+  fetchCountries(inputRef.value).then(countries => onCountrySearch(countries));
+}
+
+function onCountrySearch(countries) {
+  if (!countries.length) {
+    postError('No matches found, try another country.');
     return;
   }
-  fetchCountries(this.inputText).then(countries => createMarkup(countries));
+
+  if (countries.length > 10) {
+    wrapRef.innerHTML = '';
+    postError('Too many matches found. Please enter a more specific query!');
+    return;
+  }
+
+  if (countries.length > 1) {
+    wrapRef.innerHTML = '';
+    wrapRef.insertAdjacentHTML('beforeend', markupCountryList(countries));
+    return;
+  }
+
+  if (countries.length === 1) {
+    wrapRef.innerHTML = '';
+    wrapRef.insertAdjacentHTML('beforeend', markupCountry(countries[0]));
+    return;
+  }
 }

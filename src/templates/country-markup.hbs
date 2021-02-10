@@ -1,16 +1,16 @@
-<div class="country-add">
-    <h1 class="country-header">{{name}}</h1>
-    <ul class="country-list">
-        <li class="country-item">
-            Capital:<span class="item-info">{{capital}}</span>
+<div>
+    <h1>{{name}}</h1>
+    <ul>
+        <li>
+            Capital:<span>{{capital}}</span>
         </li>
-        <li class="country-item">
-            Population:<span class="item-info">{{population}}</span>
+        <li>
+            Population:<span>{{population}}</span>
         </li>
-        <li class="country-item">Languages:
-            <ul class="languages-list">
+        <li>Languages:
+            <ul>
                 {{#each languages}}
-                <li class="lng item-info">{{this.name}}</li>
+                <li>{{this.name}}</li>
                 {{/each}}
             </ul>
         </li>
